@@ -1,7 +1,7 @@
 <?php
-require_once 'Karyawan.php';
+require_once 'karyawan.php';
 
-class KaryawanKontrak extends Karyawan {
+class KaryawanKontrak extends karyawan {
     protected $durasiKontrakBulan;
     protected $agensiPenyalur;
 
