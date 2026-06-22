@@ -1,7 +1,7 @@
 <?php
 // File: view_karyawan.php
 
-// Memanggil koneksi database dan subclass yang sudah Anda buat di Tahap 1-5
+// Memanggil koneksi dan class persis sesuai referensi Tahap 1-5 Anda
 require_once 'koneksi/database.php';
 require_once 'KaryawanTetap.php';
 require_once 'KaryawanKontrak.php';
@@ -11,10 +11,15 @@ require_once 'KaryawanMagang.php';
 $db = new Database();
 $conn = $db->connect();
 
-// Mengambil data menggunakan method spesifik subclass
-$karyawanTetapList = KaryawanTetap::ambilDataKaryawanTetap($conn);
-$karyawanKontrakList = KaryawanKontrak::ambilDataKaryawanKontrak($conn);
-$karyawanMagangList = KaryawanMagang::ambilDataKaryawanMagang($conn);
+// Mengambil data menggunakan method spesifik subclass (Tahap 4)
+$semuaTetap = KaryawanTetap::ambilDataKaryawanTetap($conn);
+$semuaKontrak = KaryawanKontrak::ambilDataKaryawanKontrak($conn);
+$semuaMagang = KaryawanMagang::ambilDataKaryawanMagang($conn);
+
+// MEMBATASI DATA: Menampilkan maksimal 3 karyawan per kategori sesuai instruksi
+$karyawanTetapList = array_slice($semuaTetap, 0, 3);
+$karyawanKontrakList = array_slice($semuaKontrak, 0, 3);
+$karyawanMagangList = array_slice($semuaMagang, 0, 3);
 ?>
 
 <!DOCTYPE html>
@@ -137,10 +142,10 @@ $karyawanMagangList = KaryawanMagang::ambilDataKaryawanMagang($conn);
                         <div class="col-md-6 col-lg-4">
                             <div class="card slip-card p-3">
                                 <div class="card-header-custom">Slip Gaji - Karyawan Tetap</div>
-                                <div class="card-body p-0">
+                                <div class="card-body p-0 d-flex flex-column">
                                     <div class="info-box mb-3">
                                         <?php 
-                                            // Mencetak dari Method Tahap 5
+                                            // Eksekusi Polimorfisme (Tahap 5)
                                             echo $karyawan->tampilkanProfilKaryawan(); 
                                         ?>
                                     </div>
@@ -161,10 +166,10 @@ $karyawanMagangList = KaryawanMagang::ambilDataKaryawanMagang($conn);
                         <div class="col-md-6 col-lg-4">
                             <div class="card slip-card p-3">
                                 <div class="card-header-custom">Slip Gaji - Tenaga Kontrak</div>
-                                <div class="card-body p-0">
+                                <div class="card-body p-0 d-flex flex-column">
                                     <div class="info-box mb-3">
                                         <?php 
-                                            // Mencetak dari Method Tahap 5
+                                            // Eksekusi Polimorfisme (Tahap 5)
                                             echo $karyawan->tampilkanProfilKaryawan(); 
                                         ?>
                                     </div>
@@ -185,10 +190,10 @@ $karyawanMagangList = KaryawanMagang::ambilDataKaryawanMagang($conn);
                         <div class="col-md-6 col-lg-4">
                             <div class="card slip-card p-3">
                                 <div class="card-header-custom">Slip Gaji - Peserta Magang</div>
-                                <div class="card-body p-0">
+                                <div class="card-body p-0 d-flex flex-column">
                                     <div class="info-box mb-3">
                                         <?php 
-                                            // Mencetak dari Method Tahap 5
+                                            // Eksekusi Polimorfisme (Tahap 5)
                                             echo $karyawan->tampilkanProfilKaryawan(); 
                                         ?>
                                     </div>
