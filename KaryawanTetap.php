@@ -1,7 +1,7 @@
 <?php
-require_once 'karyawan.php';
+require_once 'Karyawan.php';
 
-class KaryawanTetap extends karyawan {
+class KaryawanTetap extends Karyawan {
     protected $tunjanganKesehatan;
     protected $opsiSahamId;
 
