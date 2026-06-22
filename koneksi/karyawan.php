@@ -1,7 +1,7 @@
 <?php
 // File: Karyawan.php
 
-abstract class karyawan {
+abstract class Karyawan {
     // Properti terenkapsulasi dengan hak akses 'protected'
     // agar bisa diakses oleh class turunannya (child class)
     protected $id_karyawan;
